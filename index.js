@@ -1,6 +1,6 @@
 const container = document.querySelector(".container");
 const span = document.querySelector("h2 span");
-
+let markedId = -1;
 //to create 10 div
 function divs(){
     for(let i = 0; i< 10; i++){
@@ -14,11 +14,13 @@ function divs(){
         box.id = i;
                  // click div
         box.addEventListener("click", (e) => {
-            console.log(e.target.innerText)   
-            let innerTextBox =e.target.innerText; // get text of 1st clicked box
-            if(innerTextBox === e.target.innerText){
-                box.remove();
-            }
+           // select the 1st box with id
+           let firstClickBox = document.getElementById(e.target.id);
+           //mark it
+           if(markedId === -1){
+                markedId = e.target.id;
+                firstClickBox.classList.add("marked");
+           }
             
         
 })
