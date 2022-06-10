@@ -19,13 +19,20 @@ function divs() {
       let firstClickBox = document.getElementById(e.target.id);
       //mark it
       if (markedId === -1) {
-        markedId = e.target.id;
+        markedId = e.target.id; // 1st box
+        console.log("markedId",markedId)
         markedText = e.target.innerText;
+        console.log("markedText",markedText)
         firstClickBox.classList.add("marked");
       } else {
-        if(markedText === e.target.innerText){
+        if ((markedId = e.target.id)) {
+          firstClickBox.classList.remove("marked");
+          markedId = -1;
+        } else {
+          //removing the 2nd box if the text is same
+          if (markedText === e.target.innerText) {
             box.remove();
-            firstClickBox.remove();
+          }
         }
       }
     });
