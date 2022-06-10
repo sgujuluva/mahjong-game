@@ -10,6 +10,21 @@ function divs(){
         let textBox = document.createTextNode(randomNumber);
         box.appendChild(textBox);
         container.appendChild(box); 
+        //to create id
+        box.id = i;
+                 // click div
+        box.addEventListener("click", (e) => {
+            console.log(e.target.innerText)   
+            let innerTextBox =e.target.innerText; // get text of 1st clicked box
+            if(innerTextBox === e.target.innerText){
+                box.remove();
+            }
+            
+        
+})
+     
     }
 }
 divs();
+
+  
