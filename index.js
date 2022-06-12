@@ -25,18 +25,20 @@ console.log("firstClickBoxText",firstClickBoxText)
         firstClickBox.classList.add("marked");
         markedId = e.target.id;
       } else {
-        // if same box clicked again
+         // if same box clicked again
         if (markedId === e.target.id) {
           firstClickBox.classList.remove("marked");
           markedId = -1;
-        } else {
+        }  else {
           // another box clicked
-          if (firstClickBoxText === e.target.innerText) {
+          if (!firstClickBoxText == e.target.innerText) {
             console.log("firstClickBoxText1",firstClickBoxText)
             console.log(e.target.innerText)
             // user clicked correct box
-            removeBox(e.target.id, markedId);
+       
           
+          }else{
+            removeBox(e.target.id, markedId);
           }
         }
         markedId = -1;     
