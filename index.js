@@ -16,28 +16,34 @@ function divs() {
     box.id = i;
     // click div
     box.addEventListener("click", (e) => {
-     
-// select the 1st box with id
-let firstClickBox = document.getElementById(e.target.id);
-let firstClickBoxText = firstClickBox.innerText;
-
-// to select the first clicked box with the Id
-if (markedId === -1) {
-  firstClickBox.classList.add("marked");
-  markedId = e.target.id;
- 
-  }else{ // if same box clicked again
-    if(markedId === e.target.id){
-      firstClickBox.classList.remove("marked");
-      markedId = -1;
-    }else{ // another box clicked
-      if(firstClickBoxText === e.target.innerText){ // user clicked correct box
-        removeBox(e.target.id,markedId)
+      // select the 1st box with id
+      let firstClickBox = document.getElementById(e.target.id);
+      let firstClickBoxText = firstClickBox.innerText;
+console.log("firstClickBoxText",firstClickBoxText)
+      // to select the first clicked box with the Id
+      if (markedId === -1) {
+        firstClickBox.classList.add("marked");
+        markedId = e.target.id;
+      } else {
+        // if same box clicked again
+        if (markedId === e.target.id) {
+          firstClickBox.classList.remove("marked");
+          markedId = -1;
+        } else {
+          // another box clicked
+          if (firstClickBoxText === e.target.innerText) {
+            console.log("firstClickBoxText1",firstClickBoxText)
+            console.log(e.target.innerText)
+            // user clicked correct box
+            removeBox(e.target.id, markedId);
+          
+          }
+        }
+        markedId = -1;     
       }
-    }
-  }
-  
-} ) 
+
+    });  
+
   }
 }
 divs();
@@ -45,11 +51,14 @@ divs();
 function removeBox(a, b) {
   let box1 = document.getElementById(a);
   let box2 = document.getElementById(b);
+  console.log(box1)
+  console.log(box2)
   box1.remove();
   box2.remove();
 }
 // update mistakes
-function scoreMistakes(){
+function scoreMistakes() {
   let score = document.querySelector("h2");
-  h2.innerText = "Remaining mistakes :" + mistakes;
+  console.log(score)
+  score.textContent =  `${mistakes}`;
 }
