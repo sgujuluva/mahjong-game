@@ -17,15 +17,26 @@ function divs() {
     box.addEventListener("click", (e) => {
       // select the 1st box with id
       let firstClickBox = document.getElementById(e.target.id);
-      console.log(firstClickBox)
-      let firstClickBoxText = firstClickBox.innerText
-      console.log(firstClickBoxText)
+      let firstClickBoxText = firstClickBox.innerText;
+      console.log(firstClickBoxText);
       // to select the first clicked box with the Id
-     if(markedId === -1){
-       firstClickBox.classList.add("marked");
-       markedId = e.target.id;
-     }
-  })
-}
+      if (markedId === -1) {
+        firstClickBox.classList.add("marked");
+        markedId = e.target.id;
+      } else {
+        if (firstClickBoxText === e.target.innerText) {
+          // another box clicked
+          removeBox(markedId, box.id);
+        }
+      }
+    });
+  }
 }
 divs();
+
+function removeBox(a, b) {
+  let box1 = document.getElementById(a);
+  let box2 = document.getElementById(b);
+  box1.remove();
+  box2.remove();
+}
