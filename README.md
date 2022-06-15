@@ -1,6 +1,6 @@
 # Mahjong game
 
-**[Test this app yourself](github.io)**
+**[Test this app yourself](https://sgujuluva.github.io/mahjong-game/)**
 
 ---
 
